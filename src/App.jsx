@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import dataparse from "papaparse";
 import AddRecordModal from "./components/AddRecordModal.jsx";
 import Pagination from "./components/Pagination";
+import SSRTable from "./components/SSRTable";
+import SearchBar from "./components/SearchBar";
 import "./App.css";
 
 const App = () => {
@@ -52,47 +54,16 @@ const App = () => {
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <h2>SSR LIST</h2>
 
-     <div className="action-bar">
-  <div className="action-right">
-    <input
-      type="text"
-      placeholder="Search..."
-      value={search}
-      onChange={handleSearch}
-      className="search-box"
-    />
-    <button onClick={() => setShowModal(true)} className="manual-button">
-      Manual SSR Creation+
-    </button>
-  </div>
-</div>
+    <SearchBar
+  search={search}
+  onSearch={handleSearch}
+  onAddClick={() => setShowModal(true)}
+/>
 
 
-      <table border="1" cellPadding="10" width="100%">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Email ID</th>
-            <th>Phone Number</th>
-            <th>Commercial</th>
-            <th>SSR Sales Area / District</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentRecords.map((row, i) => (
-            <tr key={i}>
-              <td>{row["Name"]}</td>
-              <td>{row["Title"]}</td>
-              <td>{row["Email ID"]}</td>
-              <td>{row["Phone Number"]}</td>
-              <td>{row["Commercial"]}</td>
-              <td>{row["SSR Sales Area / District"]}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+<SSRTable records={currentRecords} />
 
+      
       {/* Pagination Controls */}
  <Pagination
         totalPages={totalPages}

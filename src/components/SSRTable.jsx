@@ -1,61 +1,32 @@
-import React, { useEffect, useState } from "react";
-import Papa from "papaparse";
-import SearchBar from "./SearchBar";
-import EmployeeTable from "./EmployeeTable";
-import Pagination from "./Pagination";
-import './App.css';
+import React from "react";
 
-const App = () => {
-  const [data, setData] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 10;
-
-  useEffect(() => {
-    fetch("/employee_data.csv")
-      .then((res) => res.text())
-      .then((csv) => {
-        Papa.parse(csv, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setData(results.data);
-            setFiltered(results.data);
-          },
-        });
-      });
-  }, []);
-
-  const handleSearch = (e) => {
-    const keyword = e.target.value.toLowerCase();
-    setSearch(keyword);
-    const filteredData = data.filter((row) =>
-      Object.values(row).some((val) =>
-        val.toLowerCase().includes(keyword)
-      )
-    );
-    setFiltered(filteredData);
-    setCurrentPage(1);
-  };
-
-  const indexOfLast = currentPage * recordsPerPage;
-  const indexOfFirst = indexOfLast - recordsPerPage;
-  const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(filtered.length / recordsPerPage);
-
+const SSRTable = ({ records }) => {
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>Employee Table</h2>
-      <SearchBar search={search} onSearch={handleSearch} />
-      <EmployeeTable records={currentRecords} />
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
-    </div>
+    <table border="1" cellPadding="10" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Email ID</th>
+          <th>Phone Number</th>
+          <th>Commercial</th>
+          <th>SSR Sales Area / District</th>
+        </tr>
+      </thead>
+      <tbody>
+        {records.map((row, i) => (
+          <tr key={i}>
+            <td>{row["Name"]}</td>
+            <td>{row["Title"]}</td>
+            <td>{row["Email ID"]}</td>
+            <td>{row["Phone Number"]}</td>
+            <td>{row["Commercial"]}</td>
+            <td>{row["SSR Sales Area / District"]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
-export default App;
+export default SSRTable;

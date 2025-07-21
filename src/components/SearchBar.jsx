@@ -1,14 +1,21 @@
 import React from "react";
 
-const SearchBar = ({ search, onSearch }) => {
+const SearchBar = ({ search, onSearch, onAddClick }) => {
   return (
-    <input
-      type="text"
-      placeholder="Search..."
-      value={search}
-      onChange={onSearch}
-      style={{ marginBottom: "10px", padding: "5px", width: "300px" }}
-    />
+    <div className="action-bar">
+      <div className="action-right">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={onSearch}
+          className="search-box"
+        />
+        <button onClick={onAddClick} className="manual-button">
+          Manual SSR Creation+
+        </button>
+      </div>
+    </div>
   );
 };
 
