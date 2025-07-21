@@ -23,7 +23,7 @@ const AddRecordModal = ({ onClose, onAdd }) => {
   .every(([, val]) => val.trim() !== "");
 
 
-  // Submit form data if valid
+  
   const handleSubmit = () => {
     if (!isFormValid) {
       alert("Please fill in all fields.");
@@ -84,7 +84,7 @@ const AddRecordModal = ({ onClose, onAdd }) => {
       >
         <h2 style={{ marginBottom: "25px", color: "#2a7a2a" }}>Add SSR</h2>
 
-        {/* Row 1 */}
+      
         <div style={rowStyle}>
           <div style={{ flex: 1 }}>
             <label htmlFor="SSR" style={labelStyle}>SSR</label>   

@@ -116,10 +116,6 @@ button:disabled {
   color: green;
 }
 
-.pagination-container button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
 
 .top-bar {
   display: flex;
@@ -144,13 +140,13 @@ button:disabled {
 .search-box {
  width: 309px;
   height: 40px;
-  Top: 81px;
+  top: 81px;
   left: 831px;
  
 }
 .search-box:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  border-color:green;
+  box-shadow:green;
 }
 
 .manual-button {
