@@ -1,7 +1,7 @@
 import React from "react";
 
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  const maxVisible = 5; // Show 5 page numbers at a time
+  const maxVisible = 5; 
   const currentGroup = Math.floor((currentPage - 1) / maxVisible);
   const startPage = currentGroup * maxVisible + 1;
   const endPage = Math.min(startPage + maxVisible - 1, totalPages);
@@ -29,7 +29,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
         ◀
       </button>
 
-      {/* Page Numbers */}
+  
       {pageNumbers.map((page) => (
         <button
   key={page}
@@ -48,7 +48,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 </button>
       ))}
 
-      {/* Right Arrow */}
+      
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}

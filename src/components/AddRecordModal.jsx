@@ -12,14 +12,14 @@ const AddRecordModal = ({ onClose, onAdd }) => {
     "SSR Sales Area / District": "",
   });
 
-  // Update form fields dynamically
+  
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // Check if all fields are non-empty (trimmed)
+  
   const isFormValid = Object.entries(form)
-  .filter(([key]) => key !== "SSR") // exclude SSR from validation
+  .filter(([key]) => key !== "SSR") 
   .every(([, val]) => val.trim() !== "");
 
 
@@ -67,10 +67,10 @@ const AddRecordModal = ({ onClose, onAdd }) => {
         zIndex: 9999,
         padding: "15px",
       }}
-      onClick={onClose} // close if clicked outside modal
+      onClick={onClose} 
     >
       <div
-        onClick={(e) => e.stopPropagation()} // prevent close on modal content click
+        onClick={(e) => e.stopPropagation()} 
         style={{
           backgroundColor: "#fff",
           borderRadius: "12px",
