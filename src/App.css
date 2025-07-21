@@ -1,4 +1,4 @@
-/* Container styling for centering and clarity */
+
 body {
   background-color: #f4f6f8;
   font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@ h2 {
   margin-bottom: 16px;
 }
 
-/* Search input consistency */
+
 input[type="text"] {
   padding: 8px 12px;
   width: 300px;
@@ -22,12 +22,7 @@ input[type="text"] {
   outline: none;
 }
 
-input[type="text"]:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-}
 
-/* Table container for shadow and rounded corners */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -37,7 +32,7 @@ table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Table header styling */
+
 thead {
   background-color: green;
 }
@@ -50,7 +45,7 @@ thead th {
   color: #333;
 }
 
-/* Table body styling */
+
 tbody tr {
   border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.2s;
@@ -66,7 +61,7 @@ tbody td {
   color: #555;
 }
 
-/* Pagination buttons styling */
+
 button {
   background-color:white;
   color:green;
@@ -110,7 +105,7 @@ button:disabled {
 }
 
 .pagination-container button {
-  all: unset; /* optional, resets all default styles */
+  all: unset; 
   display: inline-block;
   padding: 6px 12px;
   border: 2px solid green !important;
@@ -168,9 +163,9 @@ button:disabled {
     width: 176px;
   height: 40px;
   top: 81px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
+  background-color:white;
+  color:#4caf50;
+  border-color: #4caf50;
   cursor: pointer;
   border-radius: 4px;
 }

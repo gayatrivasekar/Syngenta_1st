@@ -15,6 +15,12 @@ const App = () => {
   const recordsPerPage = 10;
 
   useEffect(() => {
+    const storedData = localStorage.getItem("employeeData");
+  if (storedData) {
+    const parsed = JSON.parse(storedData);
+    setData(parsed);
+    setFiltered(parsed);
+  } else {
     fetch("/employee_data.csv")
       .then((res) => res.text())
       .then((csv) => {
@@ -27,7 +33,8 @@ const App = () => {
           },
         });
       });
-  }, []);
+  }
+}, []);
 
   const handleSearch = (e) => {
     const keyword = e.target.value.toLowerCase();
@@ -43,6 +50,7 @@ const App = () => {
     const updatedData = [newRecord, ...data];
     setData(updatedData);
     setFiltered(updatedData);
+    localStorage.setItem("employeeData", JSON.stringify(updatedData));
   };
 
   const indexOfLast = currentPage * recordsPerPage;
@@ -64,14 +72,14 @@ const App = () => {
 <SSRTable records={currentRecords} />
 
       
-      {/* Pagination Controls */}
+  
  <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
 
-      {/* Add Record Modal */}
+    
       {showModal && (
         <AddRecordModal
           onClose={() => setShowModal(false)}
