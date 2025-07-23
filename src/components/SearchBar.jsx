@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const SearchBar = ({ search, onSearch, onAddClick }) => {
   return (
@@ -16,6 +16,8 @@ const SearchBar = ({ search, onSearch, onAddClick }) => {
         </button>
       </div>
     </div>
+
+    
   );
 };
 

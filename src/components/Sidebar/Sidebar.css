@@ -1,0 +1,39 @@
+
+.sidebar {
+  width: 60px;
+  height: 100vh;
+  background-color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  gap: 6px;
+}
+
+.menu-item, .expand {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item:hover, .expand:hover {
+  background-color: #374151;
+  border-radius: 8px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.dash{
+    width: 48px;
+    height: 48px;
+    top: 6px;
+    left: 8px;
+}
+
+

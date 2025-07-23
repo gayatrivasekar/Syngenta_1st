@@ -60,7 +60,7 @@ const AddRecordModal = ({ onClose, onAdd }) => {
       style={{
         position: "fixed",
         top: 0, left: 0, right: 0, bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "gray",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -210,7 +210,7 @@ const AddRecordModal = ({ onClose, onAdd }) => {
               cursor: "pointer",
               transition: "background-color 0.2s ease",
             }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = "#f0f0f0"}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = "#fff"}
             onMouseLeave={e => e.currentTarget.style.backgroundColor = "#fff"}
           >
             Cancel

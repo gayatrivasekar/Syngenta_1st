@@ -4,6 +4,8 @@ import AddRecordModal from "./components/AddRecordModal.jsx";
 import Pagination from "./components/Pagination";
 import SSRTable from "./components/SSRTable";
 import SearchBar from "./components/SearchBar";
+import Topbar from "./components/Topbar/Topbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import "./App.css";
 
 const App = () => {
@@ -16,25 +18,25 @@ const App = () => {
 
   useEffect(() => {
     const storedData = localStorage.getItem("employeeData");
-  if (storedData) {
-    const parsed = JSON.parse(storedData);
-    setData(parsed);
-    setFiltered(parsed);
-  } else {
-    fetch("/employee_data.csv")
-      .then((res) => res.text())
-      .then((csv) => {
-        dataparse.parse(csv, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setData(results.data);
-            setFiltered(results.data);
-          },
+    if (storedData) {
+      const parsed = JSON.parse(storedData);
+      setData(parsed);
+      setFiltered(parsed);
+    } else {
+      fetch("/employee_data.csv")
+        .then((res) => res.text())
+        .then((csv) => {
+          dataparse.parse(csv, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (results) => {
+              setData(results.data);
+              setFiltered(results.data);
+            },
+          });
         });
-      });
-  }
-}, []);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     const keyword = e.target.value.toLowerCase();
@@ -59,33 +61,37 @@ const App = () => {
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>SSR LIST</h2>
+    <div className="app-container" style={{ display: "flex", height: "100vh" }}>
+      <Sidebar />
 
-    <SearchBar
-  search={search}
-  onSearch={handleSearch}
-  onAddClick={() => setShowModal(true)}
-/>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <Topbar />
 
+        <div style={{ padding: "20px", flex: 1, overflowY: "auto" }}>
+          <h2>SSR LIST</h2>
 
-<SSRTable records={currentRecords} />
+          <SearchBar
+            search={search}
+            onSearch={handleSearch}
+            onAddClick={() => setShowModal(true)}
+          />
 
-      
-  
- <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+          <SSRTable records={currentRecords} />
 
-    
-      {showModal && (
-        <AddRecordModal
-          onClose={() => setShowModal(false)}
-          onAdd={handleAddRecord}
-        />
-      )}
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+
+          {showModal && (
+            <AddRecordModal
+              onClose={() => setShowModal(false)}
+              onAdd={handleAddRecord}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 };

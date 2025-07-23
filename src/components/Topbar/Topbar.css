@@ -1,0 +1,59 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.role {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.name {
+  font-size: 13px;
+  color: #666;
+}
+
+.year-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 32px;
+}
+
+.year-dropdown label {
+  font-size: 13px;
+  color: #333;
+}
+
+.year-dropdown select {
+  padding: 4px 8px;
+  font-size: 13px;
+}

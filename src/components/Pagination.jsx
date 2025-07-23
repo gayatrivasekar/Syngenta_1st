@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const maxVisible = 5; 
