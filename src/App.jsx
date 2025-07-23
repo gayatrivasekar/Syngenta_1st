@@ -1,4 +1,3 @@
-// App.js
 import React, { useEffect, useState } from "react";
 import dataparse from "papaparse";
 import AddRecordModal from "./components/AddRecordModal.jsx";
@@ -9,6 +8,7 @@ import Topbar from "./components/Topbar/Topbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import CatalogCard from "./components/CatalogCard/CatalogCard";
 import AdminCatalog from "./components/AdminCatalog/AdminCatalog";
+import RetailerCatalog from "./components/RetailerCatalog/RetailerCatalog";
 import "./App.css";
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
   const [showSSR, setShowSSR] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const [showRetailer, setShowRetailer] = useState(false);
+  const [selectedRetailer, setSelectedRetailer] = useState("");
 
   const recordsPerPage = 10;
 
@@ -67,6 +68,17 @@ const App = () => {
   const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
+  // Retailer options (hardcoded for now)
+  const retailerList = [
+    "abc",
+    "Ag Partners, Farmers Co-op Society",
+    "AgriEdge Executive growers",
+    "Aurora CP",
+    "Aurora, Wilbur Ellis",
+    "Aurora, Wilbur Ellis, Ag State",
+    "COA",
+  ];
+
   return (
     <div className="app-container" style={{ display: "flex", height: "100vh" }}>
       <Sidebar />
@@ -102,25 +114,30 @@ const App = () => {
           </CatalogCard>
 
           <CatalogCard
-  title="Admin Catalog"
-
-  isOpen={showAdmin}
-  onClick={() => setShowAdmin(!showAdmin)}
->
-  <AdminCatalog />
-</CatalogCard>
-
+            title="Admin Catalog"
+            isOpen={showAdmin}
+            onClick={() => setShowAdmin(!showAdmin)}
+          >
+            <AdminCatalog />
+          </CatalogCard>
 
           <CatalogCard
             title="Retailer Catalog"
-            
             isOpen={showRetailer}
             onClick={() => setShowRetailer(!showRetailer)}
           >
-            <p>This section is dedicated to retailer-specific data or controls.</p>
+            <RetailerCatalog
+              label="Retailer Name"
+              options={retailerList}
+              value={selectedRetailer}
+              onChange={setSelectedRetailer}
+            />
+            {selectedRetailer && (
+              <p>
+                Selected Retailer: <strong>{selectedRetailer}</strong>
+              </p>
+            )}
           </CatalogCard>
-
-          
         </div>
       </div>
     </div>
