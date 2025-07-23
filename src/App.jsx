@@ -1,3 +1,4 @@
+// App.js
 import React, { useEffect, useState } from "react";
 import dataparse from "papaparse";
 import AddRecordModal from "./components/AddRecordModal.jsx";
@@ -6,6 +7,8 @@ import SSRTable from "./components/SSRTable";
 import SearchBar from "./components/SearchBar";
 import Topbar from "./components/Topbar/Topbar";
 import Sidebar from "./components/Sidebar/Sidebar";
+import CatalogCard from "./components/CatalogCard/CatalogCard";
+import AdminCatalog from "./components/AdminCatalog/AdminCatalog";
 import "./App.css";
 
 const App = () => {
@@ -14,6 +17,10 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const [showSSR, setShowSSR] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [showRetailer, setShowRetailer] = useState(false);
+
   const recordsPerPage = 10;
 
   useEffect(() => {
@@ -68,28 +75,52 @@ const App = () => {
         <Topbar />
 
         <div style={{ padding: "20px", flex: 1, overflowY: "auto" }}>
-          <h2>SSR LIST</h2>
-
-          <SearchBar
-            search={search}
-            onSearch={handleSearch}
-            onAddClick={() => setShowModal(true)}
-          />
-
-          <SSRTable records={currentRecords} />
-
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-          />
-
-          {showModal && (
-            <AddRecordModal
-              onClose={() => setShowModal(false)}
-              onAdd={handleAddRecord}
+          <CatalogCard
+            title="SSR Catalog"
+            description="Please add SSR to configure the grower data"
+            isOpen={showSSR}
+            onClick={() => setShowSSR(!showSSR)}
+          >
+            <h2>SSR LIST</h2>
+            <SearchBar
+              search={search}
+              onSearch={handleSearch}
+              onAddClick={() => setShowModal(true)}
             />
-          )}
+            <SSRTable records={currentRecords} />
+            <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+            {showModal && (
+              <AddRecordModal
+                onClose={() => setShowModal(false)}
+                onAdd={handleAddRecord}
+              />
+            )}
+          </CatalogCard>
+
+          <CatalogCard
+  title="Admin Catalog"
+
+  isOpen={showAdmin}
+  onClick={() => setShowAdmin(!showAdmin)}
+>
+  <AdminCatalog />
+</CatalogCard>
+
+
+          <CatalogCard
+            title="Retailer Catalog"
+            
+            isOpen={showRetailer}
+            onClick={() => setShowRetailer(!showRetailer)}
+          >
+            <p>This section is dedicated to retailer-specific data or controls.</p>
+          </CatalogCard>
+
+          
         </div>
       </div>
     </div>

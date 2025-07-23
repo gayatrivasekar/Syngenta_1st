@@ -1,0 +1,43 @@
+.catalog-card {
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.catalog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 20px;
+   min-height: 80px;      /* increase row height */
+  background-color: #f0f4f8; /* optional: subtle background */
+  border-radius: 10px;
+
+}
+
+.catalog-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.catalog-header p {
+  margin: 5px 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.arrow-icon {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+.catalog-body {
+  margin-top: 20px;
+}
