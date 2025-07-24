@@ -1,7 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
 
-// Importing all icons
 import Icon1 from "../../assets/icons/1.png";
 import Icon2 from "../../assets/icons/2.png";
 import Icon3 from "../../assets/icons/3.png";

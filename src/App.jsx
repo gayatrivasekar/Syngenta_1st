@@ -68,7 +68,7 @@ const App = () => {
   const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
-  // Retailer options (hardcoded for now)
+
   const retailerList = [
     "abc",
     "Ag Partners, Farmers Co-op Society",

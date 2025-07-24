@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 const RetailerCatalog = ({ label, options, value, onChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -62,7 +61,7 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
         </button>
       </div>
 
-      {/* Headshed Modal */}
+    
       {showModal && (
         <div
           style={{
@@ -201,7 +200,6 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
         </div>
       )}
 
-      {/* Confirmation Modal */}
       {showConfirmation && (
         <div
           style={{
@@ -227,9 +225,7 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
             }}
           >
             <h2 style={{ color: "green", marginBottom: "15px" }}>User Creation</h2>
-            <p style={{ color: "#555", marginBottom: "20px" }}>
-              Creating users will take some time
-            </p>
+            
             <button
               onClick={closeConfirmation}
               style={{
