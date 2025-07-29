@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import dataparse from "papaparse";
+
 import AddRecordModal from "./components/AddRecordModal.jsx";
 import Pagination from "./components/Pagination";
 import SSRTable from "./components/SSRTable";
@@ -9,6 +11,11 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import CatalogCard from "./components/CatalogCard/CatalogCard";
 import AdminCatalog from "./components/AdminCatalog/AdminCatalog";
 import RetailerCatalog from "./components/RetailerCatalog/RetailerCatalog";
+
+// ✅ Corrected this import
+import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
+import CompanyDetailsView from "./components/CompanyDetailsView/CompanyDetailsView";
+
 import "./App.css";
 
 const App = () => {
@@ -68,79 +75,86 @@ const App = () => {
   const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
-
-  const retailerList = [
-    "abc",
-    "Ag Partners, Farmers Co-op Society",
-    "AgriEdge Executive growers",
-    "Aurora CP",
-    "Aurora, Wilbur Ellis",
-    "Aurora, Wilbur Ellis, Ag State",
-    "COA",
-  ];
+  
 
   return (
-    <div className="app-container" style={{ display: "flex", height: "100vh" }}>
-      <Sidebar />
+    <Router>
+      <div className="app-container" style={{ display: "flex", height: "100vh" }}>
+        <Sidebar />
+        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <Topbar />
+          <div style={{ padding: "20px", flex: 1, overflowY: "auto" }}>
+            <Routes>
+      
+              <Route
+                path="/"
+                element={
+                  <>
+                    <CatalogCard
+                      title="SSR Catalog"
+                      description="Please add SSR to configure the grower data"
+                      isOpen={showSSR}
+                      onClick={() => setShowSSR(!showSSR)}
+                    >
+                  
+                      <SearchBar
+                        search={search}
+                        onSearch={handleSearch}
+                        onAddClick={() => setShowModal(true)}
+                      />
+                      <SSRTable records={currentRecords} />
+                      <Pagination
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        onPageChange={setCurrentPage}
+                      />
+                      {showModal && (
+                        <AddRecordModal
+                          onClose={() => setShowModal(false)}
+                          onAdd={handleAddRecord}
+                        />
+                      )}
+                    </CatalogCard>
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        <Topbar />
+                    <CatalogCard
+                      title="Admin Catalog"
+                      isOpen={showAdmin}
+                      onClick={() => setShowAdmin(!showAdmin)}
+                    >
+                      <AdminCatalog />
+                    </CatalogCard>
 
-        <div style={{ padding: "20px", flex: 1, overflowY: "auto" }}>
-          <CatalogCard
-            title="SSR Catalog"
-            description="Please add SSR to configure the grower data"
-            isOpen={showSSR}
-            onClick={() => setShowSSR(!showSSR)}
-          >
-            <h2>SSR LIST</h2>
-            <SearchBar
-              search={search}
-              onSearch={handleSearch}
-              onAddClick={() => setShowModal(true)}
-            />
-            <SSRTable records={currentRecords} />
-            <Pagination
-              totalPages={totalPages}
-              currentPage={currentPage}
-              onPageChange={setCurrentPage}
-            />
-            {showModal && (
-              <AddRecordModal
-                onClose={() => setShowModal(false)}
-                onAdd={handleAddRecord}
+                    <CatalogCard
+                      title="Retailer Catalog"
+                      isOpen={showRetailer}
+                      onClick={() => setShowRetailer(!showRetailer)}
+                    >
+                     <RetailerCatalog
+                      label="Retailer Name"
+                     value={selectedRetailer}
+                     onChange={setSelectedRetailer}
+                    />
+
+                      {selectedRetailer && (
+                        <p>
+                           <strong>{selectedRetailer}</strong>
+                        </p>
+                      )}
+                    </CatalogCard>
+                  </>
+                }
               />
-            )}
-          </CatalogCard>
 
-          <CatalogCard
-            title="Admin Catalog"
-            isOpen={showAdmin}
-            onClick={() => setShowAdmin(!showAdmin)}
-          >
-            <AdminCatalog />
-          </CatalogCard>
+              {/* ✅ Route for full company table */}
+              <Route path="/admin" element={<CompanyDetails />} />
 
-          <CatalogCard
-            title="Retailer Catalog"
-            isOpen={showRetailer}
-            onClick={() => setShowRetailer(!showRetailer)}
-          >
-            <RetailerCatalog
-              label="Retailer Name"
-              options={retailerList}
-              value={selectedRetailer}
-              onChange={setSelectedRetailer}
-            />
-            {selectedRetailer && (
-              <p>
-                Selected Retailer: <strong>{selectedRetailer}</strong>
-              </p>
-            )}
-          </CatalogCard>
+              {/* ✅ Route for company detail view page */}
+              <Route path="/company/:companyName" element={<CompanyDetailsView />} />
+            </Routes>
+          </div>
         </div>
       </div>
-    </div>
+    </Router>
   );
 };
 

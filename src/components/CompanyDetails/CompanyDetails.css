@@ -1,0 +1,62 @@
+.top-controls {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.left-side {
+  flex-shrink: 0;
+}
+
+.right-side {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.email-reminder {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+table th, table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  white-space: nowrap;
+}
+
+table th {
+  background-color: #0e7e30;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.pagination button {
+  margin-right: 10px;
+  padding: 5px 10px;
+}

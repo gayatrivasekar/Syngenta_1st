@@ -54,7 +54,7 @@ const AdminCatalog = () => {
     return matchesSearch && matchesTitle;
   });
 
-  // Position filter popup below Title header
+  
   const toggleFilter = () => {
     if (titleHeaderRef.current) {
       const rect = titleHeaderRef.current.getBoundingClientRect();
@@ -66,7 +66,7 @@ const AdminCatalog = () => {
     setShowFilter((prev) => !prev);
   };
 
-  // Close on outside click
+  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -84,7 +84,7 @@ const AdminCatalog = () => {
   return (
     <div className="admin-catalog">
       <div className="admin-catalog-header">
-        <h2>Admin Catalog</h2>
+      
         <input
           type="text"
           placeholder="Search..."

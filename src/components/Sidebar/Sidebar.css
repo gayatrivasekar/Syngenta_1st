@@ -37,3 +37,10 @@
 }
 
 
+
+
+/* Increase size only for first (Dashboard) icon */
+.icon.dash {
+  width: 55px;
+  height: 55px;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-const RetailerCatalog = ({ label, options, value, onChange }) => {
+
+const RetailerCatalog = ({ label, options = [], value, onChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [headsheds, setHeadsheds] = useState([{ title: "", name: "", email: "" }]);
@@ -61,18 +62,20 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
         </button>
       </div>
 
-    
+      {/* Modal */}
       {showModal && (
         <div
           style={{
             position: "fixed",
-            top: 0, left: 0,
-            width: "100%", height: "100%",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
             backgroundColor: "rgba(0,0,0,0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 1000,
+            zIndex: 9999,
           }}
         >
           <div
@@ -91,67 +94,63 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
               Retail Headshed
             </h2>
 
-            {headsheds.length === 0 ? (
-              <p style={{ textAlign: "center", margin: "20px 0" }}>
-                No Headsheds added yet. Click “Add Headshed +” below to add.
-              </p>
-            ) : (
-              headsheds.map((hs, index) => (
+            {headsheds.map((hs, index) => (
+              <div
+                key={index}
+                style={{
+                  marginBottom: "20px",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "6px",
+                }}
+              >
                 <div
-                  key={index}
                   style={{
-                    marginBottom: "20px",
-                    padding: "10px",
-                    border: "1px solid #ccc",
-                    borderRadius: "6px",
-                    position: "relative",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <h4 style={{ margin: "0 0 10px 0", color: "#333" }}>
-                      Retail Headshed {index + 1}
-                    </h4>
-                    <button
-                      onClick={() => deleteHeadshed(index)}
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        color: "Black",
-                        fontSize: "18px",
-                        cursor: "pointer",
-                      }}
-                      title="Delete Headshed"
-                    >
-                      ×
-
-                    </button>
-                  </div>
-                  <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                    <input
-                      type="text"
-                      placeholder="Title *"
-                      value={hs.title}
-                      onChange={(e) => handleHeadshedChange(index, "title", e.target.value)}
-                      style={{ flex: "1 1 30%", padding: "8px" }}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Name *"
-                      value={hs.name}
-                      onChange={(e) => handleHeadshedChange(index, "name", e.target.value)}
-                      style={{ flex: "1 1 30%", padding: "8px" }}
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email *"
-                      value={hs.email}
-                      onChange={(e) => handleHeadshedChange(index, "email", e.target.value)}
-                      style={{ flex: "1 1 30%", padding: "8px" }}
-                    />
-                  </div>
+                  <h4 style={{ marginBottom: "10px" }}>Retail Headshed {index + 1}</h4>
+                  <button
+                    onClick={() => deleteHeadshed(index)}
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "black",
+                      fontSize: "20px",
+                      cursor: "pointer",
+                    }}
+                    title="Delete Headshed"
+                  >
+                    ×
+                  </button>
                 </div>
-              ))
-            )}
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <input
+                    type="text"
+                    placeholder="Title *"
+                    value={hs.title}
+                    onChange={(e) => handleHeadshedChange(index, "title", e.target.value)}
+                    style={{ flex: "1 1 30%", padding: "8px" }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Name *"
+                    value={hs.name}
+                    onChange={(e) => handleHeadshedChange(index, "name", e.target.value)}
+                    style={{ flex: "1 1 30%", padding: "8px" }}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email *"
+                    value={hs.email}
+                    onChange={(e) => handleHeadshedChange(index, "email", e.target.value)}
+                    style={{ flex: "1 1 30%", padding: "8px" }}
+                  />
+                </div>
+              </div>
+            ))}
 
             <button
               onClick={addHeadshed}
@@ -162,7 +161,6 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
                 color: "green",
                 borderRadius: "4px",
                 cursor: "pointer",
-                marginTop: "10px",
               }}
             >
               Add Headshed +
@@ -200,17 +198,20 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
         </div>
       )}
 
+      {/* Confirmation */}
       {showConfirmation && (
         <div
           style={{
             position: "fixed",
-            top: 0, left: 0,
-            width: "100%", height: "100%",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
             backgroundColor: "rgba(0,0,0,0.5)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 1100,
+            zIndex: 9999,
           }}
         >
           <div
@@ -218,14 +219,12 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
               background: "white",
               padding: "20px",
               borderRadius: "8px",
-              width: "90%",
-              maxWidth: "500px",
+              maxWidth: "400px",
               textAlign: "center",
               boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
             }}
           >
-            <h2 style={{ color: "green", marginBottom: "15px" }}>User Creation</h2>
-            
+            <h2 style={{ color: "green" }}>User Creation Successful!</h2>
             <button
               onClick={closeConfirmation}
               style={{
@@ -235,6 +234,7 @@ const RetailerCatalog = ({ label, options, value, onChange }) => {
                 border: "none",
                 borderRadius: "4px",
                 cursor: "pointer",
+                marginTop: "15px",
               }}
             >
               Okay

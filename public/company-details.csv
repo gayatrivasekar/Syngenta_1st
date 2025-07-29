@@ -1,0 +1,21 @@
+Company Name,Contact Name,Contact Email ID,Contact Number,Retailer,SSR Contact,SFDC Contact ID,SFDC Account ID,Committed SE Purchase (USD),Total Committed Area (Acres),Actual SE Purchases (USD),Total Actual Area (Acres),Stage,Status of Customer,Date of Registration,Invoices Count
+test company 1,test contact 1,laura95@yahoo.com,4429351568,ABC,John,test_sfdc_id_1,qlr73115,"135,081.00",1350.81,"61,163.00",611.63,ACTUAL PURCHASES,APPROVED,09-Jul-2025 08:56:20 PM,1 / 9
+test company 2,test contact 2,landryamanda@baker.com,885.999.0602x4015,ABC,John,test_sfdc_id_2,yDm54837,"129,391.00",1293.91,"92,502.00",925.02,ACTUAL PURCHASES,APPROVED,25-Jul-2025 04:23:10 AM,0 / 7
+test company 3,test contact 3,hilljeffrey@alexander-clark.net,239-792-0440,COA,Jane,test_sfdc_id_3,iVx72367,"72,570.00",725.70,"11,534.00",115.34,ACTUAL PURCHASES,APPROVED,21-Jul-2025 08:13:31 PM,5 / 10
+test company 4,test contact 4,cody28@yahoo.com,(958)445-6872x5547,COA,SSR,test_sfdc_id_4,dRE97331,"107,888.00",1078.88,"9,587.00",95.87,ACTUAL PURCHASES,APPROVED,05-Jul-2025 10:37:22 PM,3 / 9
+test company 5,test contact 5,david91@carson.biz,352.552.5582x1943,COA,Jane,test_sfdc_id_5,jKF31756,"28,459.00",284.59,"15,091.00",150.91,REGISTRATION,NOT VALIDATED,14-Jul-2025 11:13:18 PM,0 / 6
+test company 6,test contact 6,pgray@garcia-miller.com,821-751-0530x912,COA,SSR,test_sfdc_id_6,XPn13036,"41,507.00",415.07,"30,387.00",303.87,REGISTRATION,NOT VALIDATED,05-Jul-2025 12:30:08 AM,4 / 7
+test company 7,test contact 7,cherylware@gmail.com,2832641956,XYZ,Jane,test_sfdc_id_7,iSa64091,"95,537.00",955.37,"24,610.00",246.10,REGISTRATION,NOT VALIDATED,21-Jul-2025 12:51:52 AM,1 / 10
+test company 8,test contact 8,regina62@perez.info,001-609-179-4640x832,XYZ,Jane,test_sfdc_id_8,sjJ60507,"120,152.00",1201.52,"109,334.00",1093.34,REGISTRATION,NOT VALIDATED,23-Jul-2025 08:49:55 AM,4 / 9
+test company 9,test contact 9,betty59@gonzalez.biz,324-304-5327x10614,XYZ,Jane,test_sfdc_id_9,pni97510,"138,882.00",1388.82,"55,200.00",552.00,REGISTRATION,NOT VALIDATED,24-Jul-2025 08:28:44 AM,0 / 9
+test company 10,test contact 10,timothy45@bond.com,001-989-869-6261,XYZ,SSR,test_sfdc_id_10,vpR95356,"65,425.00",654.25,"51,283.00",512.83,ACTUAL PURCHASES,APPROVED,01-Jul-2025 03:19:54 PM,2 / 10
+test company 11,test contact 11,hermandaniel@yahoo.com,(529)311-7520,XYZ,John,test_sfdc_id_11,Omk53559,"103,923.00",1039.23,"49,233.00",492.33,REGISTRATION,NOT VALIDATED,23-Jul-2025 02:35:27 PM,3 / 8
+test company 12,test contact 12,murraysamantha@yahoo.com,310.320.8883x096,ABC,SSR,test_sfdc_id_12,UWh88315,"103,156.00",1031.56,"38,284.00",382.84,REGISTRATION,NOT VALIDATED,18-Jul-2025 01:54:33 AM,1 / 6
+test company 13,test contact 13,belljeremy@galloway.org,+1-736-564-8237x61969,ABC,SSR,test_sfdc_id_13,UNO40072,"88,188.00",881.88,"65,135.00",651.35,REGISTRATION,NOT VALIDATED,04-Jul-2025 12:32:58 PM,3 / 6
+test company 14,test contact 14,christina90@fisher-jordan.org,(071)174-9490,COA,John,test_sfdc_id_14,FSO45978,"85,565.00",855.65,"55,948.00",559.48,REGISTRATION,NOT VALIDATED,28-Jun-2025 01:00:20 AM,0 / 5
+test company 15,test contact 15,hopkinsjennifer@yahoo.com,(819)352-2818,XYZ,SSR,test_sfdc_id_15,eHD55071,"26,313.00",263.13,"7,287.00",72.87,REGISTRATION,NOT VALIDATED,09-Jul-2025 08:29:11 AM,2 / 9
+test company 16,test contact 16,derrickmcknight@yahoo.com,001-853-576-9101x398,XYZ,Jane,test_sfdc_id_16,AOY10111,"21,786.00",217.86,"6,997.00",69.97,REGISTRATION,NOT VALIDATED,18-Jul-2025 06:31:17 AM,0 / 6
+test company 17,test contact 17,jasonriggs@hotmail.com,8950090704,COA,Jane,test_sfdc_id_17,fOW45326,"41,586.00",415.86,"26,512.00",265.12,ACTUAL PURCHASES,APPROVED,11-Jul-2025 01:57:02 AM,5 / 8
+test company 18,test contact 18,williamrussell@acosta.com,001-701-603-4541x3937,ABC,John,test_sfdc_id_18,kYR40931,"122,720.00",1227.20,"66,614.00",666.14,ACTUAL PURCHASES,APPROVED,26-Jul-2025 12:52:49 PM,3 / 8
+test company 19,test contact 19,ocurry@yahoo.com,(961)075-2005,ABC,Jane,test_sfdc_id_19,vjC59070,"121,375.00",1213.75,"8,186.00",81.86,REGISTRATION,NOT VALIDATED,03-Jul-2025 03:21:35 PM,1 / 5
+test company 20,test contact 20,jbutler@gmail.com,308-328-3074,COA,SSR,test_sfdc_id_20,upb64630,"75,287.00",752.87,"43,714.00",437.14,ACTUAL PURCHASES,APPROVED,11-Jul-2025 09:24:13 PM,2 / 6
