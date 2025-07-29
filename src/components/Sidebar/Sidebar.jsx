@@ -12,7 +12,7 @@ import Icon7 from "../../assets/icons/7.png";
 import Icon8 from "../../assets/icons/8.png";
 
 const Sidebar = () => {
-  const navigate = useNavigate(); // ✅ hook to navigate
+  const navigate = useNavigate(); 
 
   const menuItems = [
     { icon: Icon1, label: "Dashboard", path: "/", className: "dash" },
@@ -32,7 +32,7 @@ const Sidebar = () => {
           className="menu-item"
           key={index}
           title={item.label}
-          onClick={() => navigate(item.path)} // ✅ navigate on click
+          onClick={() => navigate(item.path)} 
         >
           <img
             src={item.icon}

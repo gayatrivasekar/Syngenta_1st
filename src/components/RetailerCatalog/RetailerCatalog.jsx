@@ -62,7 +62,7 @@ const RetailerCatalog = ({ label, options = [], value, onChange }) => {
         </button>
       </div>
 
-      {/* Modal */}
+      
       {showModal && (
         <div
           style={{
@@ -198,7 +198,6 @@ const RetailerCatalog = ({ label, options = [], value, onChange }) => {
         </div>
       )}
 
-      {/* Confirmation */}
       {showConfirmation && (
         <div
           style={{

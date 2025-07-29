@@ -13,7 +13,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <div style={{ marginTop: "10px", display: "flex", justifyContent: "flex-end" }}>
-      {/* Left Arrow */}
+      
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

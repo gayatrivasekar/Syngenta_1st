@@ -12,7 +12,7 @@ import CatalogCard from "./components/CatalogCard/CatalogCard";
 import AdminCatalog from "./components/AdminCatalog/AdminCatalog";
 import RetailerCatalog from "./components/RetailerCatalog/RetailerCatalog";
 
-// ✅ Corrected this import
+
 import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
 import CompanyDetailsView from "./components/CompanyDetailsView/CompanyDetailsView";
 
@@ -75,7 +75,15 @@ const App = () => {
   const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
-  
+  const retailerList = [
+    "abc",
+    "Ag Partners, Farmers Co-op Society",
+    "AgriEdge Executive growers",
+    "Aurora CP",
+    "Aurora, Wilbur Ellis",
+    "Aurora, Wilbur Ellis, Ag State",
+    "COA",
+  ];
 
   return (
     <Router>
@@ -145,10 +153,10 @@ const App = () => {
                 }
               />
 
-              {/* ✅ Route for full company table */}
+            
               <Route path="/admin" element={<CompanyDetails />} />
 
-              {/* ✅ Route for company detail view page */}
+        
               <Route path="/company/:companyName" element={<CompanyDetailsView />} />
             </Routes>
           </div>

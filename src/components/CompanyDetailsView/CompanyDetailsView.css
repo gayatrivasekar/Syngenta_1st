@@ -1,4 +1,4 @@
-/* Container Scroll */
+
 .company-details-container {
   padding: 20px;
   max-height: calc(100vh - 80px);
@@ -40,7 +40,7 @@
   background-color: #115293;
 }
 
-/* Tabs */
+
 .tabs {
   display: flex;
   gap: 8px;
@@ -60,7 +60,7 @@
   color: white;
 }
 
-/* Input field layout */
+
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -87,7 +87,7 @@
   grid-column: 1 / -1;
 }
 
-/* Confirm/Cancel shown on edit */
+
 .edit-actions {
   margin-top: 30px;
   display: flex;
@@ -113,7 +113,7 @@
   cursor: pointer;
 }
 
-/* Bottom 3 buttons */
+
 .fixed-actions {
   margin-top: 30px;
   display: flex;

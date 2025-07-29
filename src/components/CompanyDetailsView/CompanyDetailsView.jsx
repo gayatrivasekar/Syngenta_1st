@@ -30,7 +30,7 @@ const CompanyDetailsView = () => {
   const handleConfirm = () => {
     setIsEditing(false);
     console.log("Updated data:", formData);
-    // Add save logic here if needed
+    
   };
 
   const handleCancel = () => {
@@ -64,7 +64,7 @@ const CompanyDetailsView = () => {
         </div>
       </div>
 
-      {/* Tabs */}
+    
       <div className="tabs">
         {TABS.map((tab) => (
           <button
@@ -77,7 +77,7 @@ const CompanyDetailsView = () => {
         ))}
       </div>
 
-      {/* Tab Content */}
+  
       <div className="tab-content">
         {activeTab === "Company Details" ? (
           <div className="details-grid scrollable">
@@ -99,7 +99,7 @@ const CompanyDetailsView = () => {
         )}
       </div>
 
-      {/* Confirm/Cancel Buttons */}
+      
       {isEditing && (
         <div className="edit-actions">
           <button className="confirm-btn" onClick={handleConfirm}>Confirm</button>
@@ -107,7 +107,7 @@ const CompanyDetailsView = () => {
         </div>
       )}
 
-      {/* Bottom Permanent Buttons */}
+      
       <div className="fixed-actions">
         <button className="delete-btn">Delete Enrollment</button>
         <button className="reject-btn">Reject Customer</button>
