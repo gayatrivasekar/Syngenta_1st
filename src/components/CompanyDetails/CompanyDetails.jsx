@@ -5,6 +5,8 @@ import "./CompanyDetails.css";
 
 const CompanyDetails = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,10 +16,23 @@ const CompanyDetails = () => {
         Papa.parse(csvText, {
           header: true,
           skipEmptyLines: true,
-          complete: (result) => setData(result.data),
+          complete: (result) => {
+            setData(result.data);
+            setFilteredData(result.data); 
+          },
         });
       });
   }, []);
+
+  useEffect(() => {
+    const keyword = searchTerm.toLowerCase();
+    const results = data.filter((row) =>
+      Object.values(row).some((value) =>
+        value?.toLowerCase().includes(keyword)
+      )
+    );
+    setFilteredData(results);
+  }, [searchTerm, data]);
 
   const columns = [
     "Company Name",
@@ -40,9 +55,17 @@ const CompanyDetails = () => {
 
   return (
     <div className="company-details">
-      <h2>Company Details</h2>
+      <div className="header-row">
+        <h2>Company Details</h2>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
 
-      {/* Sticky top controls with dropdown on left and buttons on right */}
       <div className="top-controls">
         <div className="left-side">
           <select className="email-reminder">
@@ -55,7 +78,6 @@ const CompanyDetails = () => {
         </div>
       </div>
 
-      {/* Table content */}
       <div className="table-wrapper">
         <table>
           <thead>
@@ -67,7 +89,7 @@ const CompanyDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, rowIndex) => (
+            {filteredData.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
                 style={{ cursor: "pointer" }}
@@ -87,7 +109,6 @@ const CompanyDetails = () => {
         </table>
       </div>
 
-      {/* Pagination section */}
       <div className="pagination">
         <button>{"<"}</button>
         <span>1</span>

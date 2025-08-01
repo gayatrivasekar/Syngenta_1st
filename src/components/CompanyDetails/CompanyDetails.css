@@ -60,3 +60,18 @@ table th {
   margin-right: 10px;
   padding: 5px 10px;
 }
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px; 
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 250px;
+}

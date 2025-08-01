@@ -1,0 +1,127 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.row input {
+  width: 120px;
+  padding: 6px;
+}
+
+.unit {
+  font-weight: 500;
+  color: #444;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.subheading {
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 12px;
+  background-color: white;
+}
+
+.table-header {
+  background-color: green;
+  font-weight: bold;
+}
+
+.table-row:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+.table-row input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.brand-button {
+  padding: 6px 12px;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: green;
+}
+
+.table.vertical-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.table-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.column-header {
+  flex: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+.table-row input,
+.table-row button {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+

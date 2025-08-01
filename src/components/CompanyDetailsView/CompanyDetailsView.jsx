@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import "./CompanyDetailsView.css";
+import ActualPurchasesTab from "../ActualPurchasesTab/ActualPurchasesTab";
+import Committed  from "../Committed/Committed.jsx";
+import RetailerTab from "../RetailerTab/RetailerTab"; 
 
 const TABS = [
   "Company Details",
@@ -30,7 +33,6 @@ const CompanyDetailsView = () => {
   const handleConfirm = () => {
     setIsEditing(false);
     console.log("Updated data:", formData);
-    
   };
 
   const handleCancel = () => {
@@ -53,66 +55,104 @@ const CompanyDetailsView = () => {
     "Syngenta Sales Representative",
   ];
 
+ const renderTabContent = () => {
+  switch (activeTab) {
+    case "Company Details":
+      return (
+        <div className="details-grid scrollable">
+          {fields.map((field) => (
+            <div
+              key={field}
+              className={`field ${
+                field === "Syngenta Sales Representative" ? "full-row" : ""
+              }`}
+            >
+              <label>{field}</label>
+              <input
+                value={formData[field] || ""}
+                onChange={(e) => handleChange(e, field)}
+                readOnly={!isEditing}
+              />
+            </div>
+          ))}
+        </div>
+      );
+
+    case "Retailer Details":
+      return <RetailerTab />;
+
+    case "Committed Purchases":
+      return <Committed />;
+
+    case "Actual Purchases":
+      return <ActualPurchasesTab data={formData.actualPurchases || []} />;
+
+    default:
+      return (
+        <div className="placeholder-tab">
+          <p>{activeTab} content coming soon...</p>
+        </div>
+      );
+  }
+};
+
+
+
   return (
     <div className="company-details-container">
-      {/* Top Header Bar */}
+     
       <div className="header">
-        <h2 className="company-title">Company Details - {companyName}</h2>
-        <div className="actions">
-          <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit</button>
-          <button className="details-btn">Company Details</button>
-        </div>
+        <h2 className="company-title">
+          {activeTab} - {companyName}
+        </h2>
+        {activeTab === "Company Details" && (
+          <div className="actions">
+            <button className="edit-btn" onClick={() => setIsEditing(true)}>
+              Edit
+            </button>
+            <button className="details-btn">Company Details</button>
+          </div>
+        )}
       </div>
 
-    
+     
       <div className="tabs">
         {TABS.map((tab) => (
           <button
             key={tab}
             className={`tab ${activeTab === tab ? "active" : ""}`}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => {
+              setActiveTab(tab);
+              setIsEditing(false);
+            }}
           >
             {tab}
           </button>
         ))}
       </div>
 
-  
-      <div className="tab-content">
-        {activeTab === "Company Details" ? (
-          <div className="details-grid scrollable">
-            {fields.map((field) => (
-              <div key={field} className={`field ${field === "Syngenta Sales Representative" ? "full-row" : ""}`}>
-                <label>{field}</label>
-                <input
-                  value={formData[field] || ""}
-                  onChange={(e) => handleChange(e, field)}
-                  readOnly={!isEditing}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="placeholder-tab">
-            <p>{activeTab} content coming soon...</p>
-          </div>
-        )}
-      </div>
+    
+      <div className="tab-content">{renderTabContent()}</div>
 
-      
-      {isEditing && (
+      {isEditing && activeTab === "Company Details" && (
         <div className="edit-actions">
-          <button className="confirm-btn" onClick={handleConfirm}>Confirm</button>
-          <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
+          <button className="confirm-btn" onClick={handleConfirm}>
+            Confirm
+          </button>
+          <button className="cancel-btn" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       )}
 
-      
-      <div className="fixed-actions">
-        <button className="delete-btn">Delete Enrollment</button>
-        <button className="reject-btn">Reject Customer</button>
-        <button className="reset-btn">Reset Password</button>
-      </div>
+    
+      {activeTab === "Company Details" && (
+        <div className="fixed-actions">
+          <button className="delete-btn">Delete Enrollment</button>
+          <button className="reject-btn">Reject Customer</button>
+          <button className="reset-btn">Reset Password</button>
+        </div>
+      )}
     </div>
   );
 };

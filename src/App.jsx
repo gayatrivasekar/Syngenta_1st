@@ -75,15 +75,6 @@ const App = () => {
   const currentRecords = filtered.slice(indexOfFirst, indexOfLast);
   const totalPages = Math.ceil(filtered.length / recordsPerPage);
 
-  const retailerList = [
-    "abc",
-    "Ag Partners, Farmers Co-op Society",
-    "AgriEdge Executive growers",
-    "Aurora CP",
-    "Aurora, Wilbur Ellis",
-    "Aurora, Wilbur Ellis, Ag State",
-    "COA",
-  ];
 
   return (
     <Router>
